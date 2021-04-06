@@ -37,10 +37,11 @@ void AddList(int value, int position)
 //удаление элемента
 int DeleteList(int position)
 {
+if (position < 0) {pos = 0}
+if (position > n) {pos = n}
 if (head==NULL) { cout<<"\nСписок пуст\n\n"; return 0; }
 if (head==head->next)
 {
-delete head;
 head=NULL;
 }
 else
@@ -57,7 +58,7 @@ cout<<"\nЭлемент удален...\n\n";
 //вывод элементов списка
 void PrintList()
 {
-if (head==NULL) cout<<"\nСписок пуст\n\n";
+if (head==NULL) cout << "\nСписок пуст\n\n";
 else
 {
 DoubleList *a=head;
@@ -95,3 +96,4 @@ int main()
     } while (x!=0);
     return 0;
 }
+
