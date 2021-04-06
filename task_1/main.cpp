@@ -34,11 +34,25 @@ void AddList(int value, int position)
     cout << "\nЭлемент добавлен...\n\n";
     }
 
+int GetCount()
+{
+    int c = 0;
+    DoubleList *tmp = head;
+
+    while (tmp != nullptr)
+    {
+        tmp = tmp->next;
+        c++;
+    }
+    return c;
+}
+
+
 //удаление элемента
 int DeleteList(int position)
 {
-if (position < 0) {pos = 0}
-if (position > n) {pos = n}
+    if (position < 0) {position = 0;}
+    if (position > GetCount()) {position = GetCount();}
 if (head==NULL) { cout<<"\nСписок пуст\n\n"; return 0; }
 if (head==head->next)
 {
