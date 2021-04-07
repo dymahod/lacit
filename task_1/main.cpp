@@ -68,6 +68,7 @@ a->next->prev=a->prev;
 delete a;
 }
 cout<<"\nЭлемент удален...\n\n";
+return -1;
 }
 //вывод элементов списка
 void PrintList()
