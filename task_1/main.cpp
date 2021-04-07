@@ -38,12 +38,15 @@ int GetCount()
 {
     int c = 0;
     DoubleList *tmp = head;
+    if (head==nullptr) {return 0;}
+    if (tmp->next==head) {return 1;}
 
-    while (tmp != nullptr)
+    while (tmp != head)
     {
         tmp = tmp->next;
         c++;
     }
+
     return c;
 }
 
