@@ -54,10 +54,7 @@ int DeleteList(int position)
     if (position < 0) {position = 0;}
     if (position > GetCount()) {position = GetCount();}
 if (head==NULL) { cout<<"\nСписок пуст\n\n"; return 0; }
-if (head==head->next)
-{
-head=NULL;
-}
+if (head==head->next) {head=NULL;}
 else
 {
 DoubleList *a=head;
@@ -68,7 +65,6 @@ a->next->prev=a->prev;
 delete a;
 }
 cout<<"\nЭлемент удален...\n\n";
-return -1;
 }
 //вывод элементов списка
 void PrintList()
@@ -101,7 +97,7 @@ int main()
     {
     case 1:
     cout<<"Значение > "; cin>>value;
-    cout<<"Позиция > "; cin>>position;
+
     AddList(value, position); break;
     case 2:
     cout<<"Позиция > "; cin>>position;
