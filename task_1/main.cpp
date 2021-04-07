@@ -5,40 +5,41 @@ using namespace std;
 struct DoubleList //описание узла списка
 {
     int data; //информационное поле
-    DoubleList *next; //указатель на следующий элемент
-    DoubleList *prev; //указатель на предыдущий элемент
+    struct DoubleList *next; //указатель на следующий элемент
+    struct DoubleList *prev; //указатель на предыдущий элемент
 };
-    DoubleList *head; //указатель на первый элемент списка
+   DoubleList *head; //указатель на первый элемент списка
 
 //добавление элемента
-void AddList(int value, int position)
+struct DoubleList * AddList(int value, int position)
 {
-    DoubleList *node=new DoubleList; //создание нового элемента
-    node->data=value; //присвоение элементу значения
-    if (head==NULL) //если список пуст
-    {
-    node->next=node; //установка указателя next
-    node->prev=node; //установка указателя prev
-    head=node; //определяется голова списка
-    }
-    else
-    {
-    DoubleList *p=head;
-    for(int i=position; i>1; i--)
-        p=p->next;
-    p->prev->next=node;
-    node->prev=p->prev;
-    node->next=p;
-    p->prev=node;
-    }
-    cout << "\nЭлемент добавлен...\n\n";
-    }
+struct DoubleList* node = new DoubleList; //создание нового элемента
+node->data = value; //присвоение элементу значения
+if (head == NULL) //если список пуст
+{
+node->next = node; //установка указателя next
+node->prev = node; //установка указателя prev
+head = node; //определяется голова списка
+}
+else
+{
+struct DoubleList* p = head;
+for (int i = position; i > 1; i--)
+p = p->next;
+p->prev->next = node;
+node->prev = p->prev;
+node->next = p;
+p->prev = node;
+}
 
+cout << "\nЭлемент добавлен...\n\n";
+
+}
 int GetCount()
 {
-    int c = 0;
-    DoubleList *tmp = head;
+    int c = 1;
     if (head==nullptr) {return 0;}
+    struct DoubleList *tmp = head->next;
     if (tmp->next==head) {return 1;}
 
     while (tmp != head)
@@ -52,16 +53,15 @@ int GetCount()
 
 
 //удаление элемента
-int DeleteList(int position)
-{
+struct DoubleList * DeleteList(int position){
     if (position < 0) {position = 0;}
     if (position > GetCount()) {position = GetCount();}
 if (head==NULL) { cout<<"\nСписок пуст\n\n"; return 0; }
 if (head==head->next) {head=NULL;}
 else
 {
-DoubleList *a=head;
-for (int i=position; i>1; i--) a=a->next;
+struct DoubleList *a=head;
+for (int i=0; i<position; i++) a=a->next;
 if (a==head) head=a->next;
 a->prev->next=a->next;
 a->next->prev=a->prev;
@@ -69,13 +69,14 @@ delete a;
 }
 cout<<"\nЭлемент удален...\n\n";
 }
+
 //вывод элементов списка
-void PrintList()
+struct DoubleList * PrintList()
 {
 if (head==NULL) cout << "\nСписок пуст\n\n";
 else
 {
-DoubleList *a=head;
+struct DoubleList *a=head;
 cout<<"\nЭлементы списка: ";
 do
 {
@@ -89,6 +90,12 @@ int main()
 {
     setlocale(0, "");
     int value, position, x;
+    AddList(1, 0);
+    AddList(2, 0);
+    AddList(3, 0);
+    AddList(4, 0);
+    AddList(5, 0);
+    AddList(6, 0);
     do
     {
     cout << "1. Добавить элемент" << endl;
